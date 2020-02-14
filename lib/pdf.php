@@ -51,19 +51,26 @@ $pdf->Cell (35,10,'Departamento',1,0,'C',true);
 $pdf->Cell (0,10,utf8_decode($reg['departamento']),1,1,'L');
 $pdf->Cell (35,10,'Asunto',1,0,'C',true);
 $pdf->Cell (0,10,utf8_decode($reg['asunto']),1,1,'L');
-$pdf->Cell (35,15,'Problema',1,0,'C',true);
-$pdf->Cell (0,15,utf8_decode($reg['mensaje']),1,1,'L');
+/*$pdf->Cell (35,15,'Problema',1,0,'C',true);
+$pdf->Cell (0,15,utf8_decode($reg['mensaje']),1,1,'L');*/
 $pdf->Cell (35,15,utf8_decode('Calificación'),1,0,'C',true);
 $pdf->Cell (0,15,utf8_decode($reg['calificacion']),1,1,'L');
 /*$pdf->Cell (35,15,'Solucion',1,0,'C',true);
 $pdf->Cell (0,15,utf8_decode($reg['solucion']),1,1,'L');
 */
 $pdf->Ln();
+$pdf->Cell (0,5,utf8_decode('Problema'),0,0,'C');
+$pdf->Ln();
+$pdf->SetTextColor(0,0,128);
+$pdf->SetFillColor(255, 255,255);//RGB COLOR
+$pdf->MultiCell(0,15,utf8_decode($reg['mensaje']),0,1,'J');
+
+$pdf->Ln();
 $pdf->Cell (0,5,utf8_decode('Solución'),0,0,'C');
 $pdf->Ln();
 $pdf->SetTextColor(0,0,128);
 $pdf->SetFillColor(255, 255,255);//RGB COLOR
-$pdf->MultiCell(0,15,utf8_decode($reg['solucion']),0,1,'L');
+$pdf->MultiCell(0,15,utf8_decode($reg['solucion']),0,1,'J');
 
 $pdf->Ln();
 
