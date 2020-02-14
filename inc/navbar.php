@@ -10,7 +10,7 @@
                 <span class="sr-only">toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span> 
+                <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="index.php">&nbsp;&nbsp;Support TI Avior</a>
         </div>
@@ -25,11 +25,11 @@
                         <!-- usuarios -->
                         <?php if($_SESSION['tipo']=="user"): ?>
                         <li>
-                            <a href="#!"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Mensajes</a>
+                            <a href="./index.php?view=misTickets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Mis Tickets</a>
                         </li>
                         <li>
                             <a href="./index.php?view=configuracion"><i class="fa fa-cogs"></i>&nbsp;&nbsp;Configuracion</a>
-                        </li> 
+                        </li>
                         <?php endif; ?>
 
                         <!-- admins -->
@@ -46,7 +46,7 @@
                         <li>
                             <a href="admin.php?view=config"><i class="fa fa-cogs"></i> &nbsp; Configuracion</a>
                         </li>
-                        <?php endif; ?> 
+                        <?php endif; ?>
                         <li class="divider"></li>
                         <li ><a href="./process/logout.php"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Cerrar sesión</a></li>
                     </ul>
@@ -56,9 +56,6 @@
             <ul class=" nav navbar-nav navbar-right">
                 <li>
                     <a href="./index.php"><span class="glyphicon glyphicon-home"></span> &nbsp; Inicio</a>
-                </li>
-                <li>
-                    <a href="./index.php?view=productos"><span class="glyphicon glyphicon-shopping-cart"></span> &nbsp; Productos</a>
                 </li>
                 <li>
                     <a href="./index.php?view=soporte"><span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Soporte técnico</a>
@@ -100,7 +97,7 @@
                   <label><span class="glyphicon glyphicon-lock"></span>&nbsp;Contraseña</label>
                   <input type="password" class="form-control" name="contrasena_login" placeholder="Escribe tu contraseña" required=""/>
               </div>
-              
+
               <p>¿Cómo iniciaras sesión?</p>
               <div class="radio">
                 <label>
