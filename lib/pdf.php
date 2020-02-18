@@ -27,8 +27,6 @@ $pdf->Cell (0,5,utf8_decode('Reporte de problema mediante Ticket'),0,1,'C');
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
-$pdf->Ln();
-$pdf->Ln();
 
 $pdf->Cell (0,5,utf8_decode('Información de Ticket #'.utf8_decode($reg['serie'])),0,1,'C');
 
@@ -63,14 +61,14 @@ $pdf->Cell (0,5,utf8_decode('Problema'),0,0,'C');
 $pdf->Ln();
 $pdf->SetTextColor(0,0,128);
 $pdf->SetFillColor(255, 255,255);//RGB COLOR
-$pdf->MultiCell(0,15,utf8_decode($reg['mensaje']),0,1,'J');
+$pdf->MultiCell(0,4,utf8_decode($reg['mensaje']),0,1,'J');
 
 $pdf->Ln();
 $pdf->Cell (0,5,utf8_decode('Solución'),0,0,'C');
 $pdf->Ln();
 $pdf->SetTextColor(0,0,128);
 $pdf->SetFillColor(255, 255,255);//RGB COLOR
-$pdf->MultiCell(0,15,utf8_decode($reg['solucion']),0,1,'J');
+$pdf->MultiCell(0,4,utf8_decode($reg['solucion']),0,1,'J');
 
 $pdf->Ln();
 
