@@ -1,15 +1,15 @@
 <?php if(isset($_SESSION['nombre']) && isset($_SESSION['tipo'])){
-        
+
 
         //if(isset($_POST['fecha_ticket']) && isset($_POST['name_ticket']) && isset($_POST['email_ticket'])){
         if(isset($_POST['fecha_ticket'])){
           /*Este codigo nos servira para generar un numero diferente para cada ticket*/
-          $codigo = ""; 
-          $longitud = 2; 
-          for ($i=1; $i<=$longitud; $i++){ 
-            $numero = rand(0,9); 
-            $codigo .= $numero; 
-          } 
+          $codigo = "";
+          $longitud = 2;
+          for ($i=1; $i<=$longitud; $i++){
+            $numero = rand(0,9);
+            $codigo .= $numero;
+          }
           $num=Mysql::consulta("SELECT * FROM ticket");
           $numero_filas = mysqli_num_rows($num);
 
@@ -25,7 +25,7 @@
           //$email_ticket= MysqlQuery::RequestPost('email_ticket');
           $email_ticket = $_SESSION['email'];
           $departamento_ticket= MysqlQuery::RequestPost('departamento_ticket');
-          $asunto_ticket= MysqlQuery::RequestPost('asunto_ticket');        
+          $asunto_ticket= MysqlQuery::RequestPost('asunto_ticket');
           $mensaje_ticket=  MysqlQuery::RequestPost('mensaje_ticket');
           $estado_ticket="Pendiente";
           $cabecera="From: LinuxStore El Salvador<linuxstore@hifenix.com>";
@@ -37,9 +37,9 @@
             /*----------  Enviar correo con los datos del ticket
             mail($email_ticket, $asunto_ticket, $mensaje_mail, $cabecera)
             ----------*/
-            
+
             echo '
-                <div class="alert alert-info alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
+                <div class="alert alert-info alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="text-center">TICKET CREADO</h4>
                     <p class="text-center">
@@ -50,7 +50,7 @@
 
           }else{
             echo '
-                <div class="alert alert-danger alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
+                <div class="alert alert-danger alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="text-center">OCURRIÓ UN ERROR</h4>
                     <p class="text-center">
@@ -114,7 +114,7 @@
                               <div class='input-group'>
                                 <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email_ticket" required="" title="Ejemplo@dominio.com">
                                 <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                              </div> 
+                              </div>
                           </div>
                         </div>-->
 
@@ -136,7 +136,7 @@
                                   <option value="Billing">Billing</option>
                                 </select>
                                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                              </div> 
+                              </div>
                           </div>
                         </div>
 
@@ -146,7 +146,7 @@
                               <div class='input-group'>
                                 <input type="text" class="form-control" placeholder="Asunto" name="asunto_ticket" required="">
                                 <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
-                              </div> 
+                              </div>
                           </div>
                         </div>
 
@@ -162,7 +162,7 @@
                             <button type="submit" class="btn btn-info">Abrir ticket</button>
                           </div>
                         </div>
-                             </fieldset> 
+                             </fieldset>
                       </form>
                     </div>
                   </div>
@@ -180,7 +180,7 @@
             <div class="col-sm-4">
                 <img src="./img/Stop.png" alt="Image" class="img-responsive"/><br>
                 <img src="./img/SadTux.png" alt="Image" class="img-responsive"/>
-                
+
             </div>
             <div class="col-sm-7 text-center">
                 <h1 class="text-danger">Lo sentimos esta página es solamente para usuarios registrados en LinuxStore</h1>
@@ -195,7 +195,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
       //$("#fechainput").datepicker();
-      $( "#fechainput" ).datepicker({ 
+      $( "#fechainput" ).datepicker({
         minDate: 0,
          });
   });
