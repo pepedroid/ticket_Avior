@@ -217,7 +217,11 @@ else{ ?>
                                         <td class="text-center"><?php echo $ct; ?></td>
                                         <td class="text-center"><?php echo $row['fecha']; ?></td>
                                         <td class="text-center"><?php echo $row['fechaCierre']; ?></td>
-                                        <td class="text-center"><?php echo $row['serie']; ?></td>
+                                        <?php if ($row["email_cliente"] == $_SESSION["email"]): ?>
+                                          <td class="text-center"><a href="index.php?view=ticketcon&id_consul=<?php echo $row['serie']; ?>"><?php echo $row['serie']; ?></td>
+                                        <?php else: ?>
+                                          <td class="text-center"><?php echo $row['serie']; ?></td>
+                                        <?php endif; ?>
                                         <td class="text-center"><?php echo $row['estado_ticket']; ?></td>
                                         <td class="text-center"><?php echo $row['nombre_usuario']; ?></td>
                                         <td class="text-center"><?php echo $row['email_cliente']; ?></td>

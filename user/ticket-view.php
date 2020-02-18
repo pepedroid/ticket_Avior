@@ -123,17 +123,11 @@
                           <div class="col-sm-10">
                               <div class='input-group'>
                                 <select class="form-control" name="departamento_ticket">
-                                  <option value="InBound">InBound</option>
-                                  <option value="OutBound">OutBound</option>
-                                  <option value="Capital Humano Avior">Capital Humano Avior</option>
-                                  <option value="Planeación SDS">Planeación SDS</option>
-                                  <option value="Importaciones SDS">Importaciones SDS</option>
-                                  <option value="Devoluciones SDS">Devoluciones SDS</option>
                                   <option value="Gerencia/Dirección">Gerencia/Dirección</option>
-                                  <option value="Operaciones">Operaciones</option>
-                                  <option value="Monitoreo">Monitoreo</option>
-                                  <option value="Transporte">Transporte</option>
-                                  <option value="Billing">Billing</option>
+                                  <option value="Usuario SID">Usuario SID</option>
+                                  <option value="Usuario SDS">Usuario SDS</option>
+                                  <option value="Usuario DaeWoo">Usuario DaeWoo</option>
+                                  <option value="Usuario empresa externa">Usuario empresa externa</option>
                                 </select>
                                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
                               </div>
