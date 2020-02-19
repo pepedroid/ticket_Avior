@@ -98,7 +98,7 @@
                   <br> <br> <br><br><br><br></center>
               </p>
             </div>
-            
+
             <div class="col-xs-3 col-md-3 thumbnail">
               <h3 class="text-center">Honestidad</h3>
               <p>
