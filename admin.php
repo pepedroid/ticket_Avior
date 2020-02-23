@@ -5,19 +5,19 @@ include './lib/config.php';
 header('Content-Type: text/html; charset=UTF-8');
 
 if($_SESSION['tipo']!="admin"){
-    session_start(); 
+    session_start();
     session_unset();
     session_destroy();
-    header("Location: ./index.php"); 
+    header("Location: ./index.php");
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Administración</title>
-        <?php include "./inc/links.php"; ?>        
+        <?php include "./inc/links.php"; ?>
     </head>
-    <body>   
+    <body>
         <?php include "./inc/navbar.php"; ?>
         <div class="container">
           <div class="row">

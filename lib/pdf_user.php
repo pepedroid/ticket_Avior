@@ -21,8 +21,8 @@ $pdf->SetFillColor(77, 121, 255);//RGB COLOR
 $pdf->SetDrawColor(0,0,0);
 $pdf->SetFont("Arial","b",9);
 $pdf->Image('../img/Grupo SID.JPG',15,13,-300);
-$pdf->Cell (0,5,utf8_decode('Support TI Avior'),0,1,'C');
-$pdf->Cell (0,5,utf8_decode('Reporte de problema mediante Ticket'),0,1,'C');
+$pdf->Cell (0,5,utf8_decode('Sistemas TI'),0,1,'C');
+$pdf->Cell (0,5,utf8_decode('REPORTE'),0,1,'C');
 
 $pdf->Ln();
 $pdf->Ln();
@@ -51,10 +51,12 @@ $pdf->Cell (35,10,'Asunto',1,0,'C',true);
 $pdf->Cell (0,10,utf8_decode($reg['asunto']),1,1,'L');
 /*$pdf->Cell (35,15,'Problema',1,0,'C',true);
 $pdf->Cell (0,15,utf8_decode(utf8_decode($reg['mensaje'])),1,1,'L');*/
-$pdf->Cell (35,15,utf8_decode('Calificación'),1,0,'C',true);
+$pdf->Cell (35,15,utf8_decode('Evaluación de Servicio'),1,0,'C',true);
 $pdf->Cell (0,15,utf8_decode($reg['calificacion']),1,1,'L');
 
 $pdf->Ln();
+
+$pdf->SetTextColor(245,064,033);
 $pdf->Cell (0,5,utf8_decode('Problema'),0,0,'C');
 $pdf->Ln();
 $pdf->SetTextColor(0,0,128);
@@ -68,6 +70,6 @@ $pdf->SetFillColor(255, 255,255);//RGB COLOR
 $pdf->MultiCell(0,4,utf8_decode($reg['solucion']),0,1,'J');
 
 
-$pdf->cell(0,5,"Support TI Avior ".date("Y") ,0,0,'C');
+$pdf->cell(0,5,"Sistemas TI".date("Y") ,0,0,'C');
 
 $pdf->output();
