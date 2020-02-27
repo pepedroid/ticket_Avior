@@ -2,15 +2,15 @@
 session_start();
 include './lib/class_mysql.php';
 include './lib/config.php';
-header('Content-Type: text/html; charset=UTF-8');  
+header('Content-Type: text/html; charset=UTF-8');
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Support TI Avior</title>
-        <?php include "./inc/links.php"; ?>        
+        <?php include "./inc/links.php"; ?>
     </head>
-    <body>   
+    <body>
         <?php include "./inc/navbar.php"; ?>
         <div class="container">
           <div class="row">
@@ -30,7 +30,7 @@ header('Content-Type: text/html; charset=UTF-8');
         <?php
             if(isset($_GET['view'])){
                 $content=$_GET['view'];
-                $WhiteList=["index","productos","soporte","ticket","ticketcon","registro","configuracion"];
+                $WhiteList=["index","soporte","ticket","ticketcon","registro","configuracion","misTickets"];
                 if(in_array($content, $WhiteList) && is_file("./user/".$content."-view.php")){
                     include "./user/".$content."-view.php";
                 }else{
@@ -40,7 +40,7 @@ header('Content-Type: text/html; charset=UTF-8');
                         <div class="col-sm-4">
                             <img src="./img/Stop.png" alt="Image" class="img-responsive"/><br>
                             <img src="./img/SadTux.png" alt="Image" class="img-responsive"/>
-                            
+
                         </div>
                         <div class="col-sm-7 text-center">
                             <h1 class="text-danger">Lo sentimos, la opción que ha seleccionado no se encuentra disponible</h1>
@@ -56,7 +56,7 @@ header('Content-Type: text/html; charset=UTF-8');
             }
         ?>
 
-        
+
       <?php include './inc/footer.php'; ?>
     </body>
 </html>
