@@ -4,12 +4,11 @@ if(isset($_POST['del_ticket'])){
   date_default_timezone_set("America/Mexico_City");
   $id=MysqlQuery::RequestPost('del_ticket');
   $calificacion=MysqlQuery::RequestPost('optCalificacion');
-  $fechaCierre= date("d/m/Y h:i:s");
- 
+  $fecha_evaluacion= date("d/m/Y h:i:s");
 
-  if(MysqlQuery::Actualizar("ticket", "calificacion='$calificacion',estado_ticket='Resuelto',fechaCierre='$fechaCierre'","serie='$id'")){
+  if(MysqlQuery::Actualizar("ticket", "calificacion='$calificacion',estado_ticket='Resuelto',fechaEvaluacion='$fecha_evaluacion'","serie='$id'")){
     echo '
-        <div class="alert alert-info alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
+        <div class="alert alert-info alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
             <h4 class="text-center">Servicio Calificado!</h4>
             <p class="text-center">
@@ -19,7 +18,7 @@ if(isset($_POST['del_ticket'])){
     ';
   }else{
     echo '
-        <div class="alert alert-danger alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
+        <div class="alert alert-danger alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
             <h4 class="text-center">OCURRIÓ UN ERROR</h4>
             <p class="text-center">
@@ -35,7 +34,7 @@ $email_consul =  $_SESSION['email'];
 
 $consulta_tablaTicket=Mysql::consulta("SELECT * FROM ticket WHERE serie= '$id_colsul' AND email_cliente='$email_consul'");
 if(mysqli_num_rows($consulta_tablaTicket)>=1){
-  $lsT=mysqli_fetch_array($consulta_tablaTicket, MYSQLI_ASSOC);   
+  $lsT=mysqli_fetch_array($consulta_tablaTicket, MYSQLI_ASSOC);
 ?>
         <div class="container">
             <div class="row well">
@@ -61,7 +60,7 @@ if(mysqli_num_rows($consulta_tablaTicket)>=1){
                                       <div class="col-sm-8">
                                           <div class="row">
                                               <div class="col-sm-6"><strong>Fecha de Apertura:</strong> <?php echo $lsT['fecha']; ?></div>
-                                              <div class="col-sm-6"><strong>Estado:</strong> <?php echo $lsT['estado_ticket']; ?></div>
+                                              <div class="col-sm-6"><strong>Fecha de Cierre:</strong> <?php echo $lsT['fechaCierre']; ?></div>
                                           </div>
                                           <br>
                                           <div class="row">
@@ -75,7 +74,8 @@ if(mysqli_num_rows($consulta_tablaTicket)>=1){
                                           </div>
                                           <br>
                                           <div class="row">
-                                              <div class="col-sm-12"><strong>Problema:</strong> <?php echo $lsT['mensaje']; ?></div>
+                                              <div class="col-sm-6"><strong>Problema:</strong> <?php echo $lsT['mensaje']; ?></div>
+                                              <div class="col-sm-6"><strong>Estado:</strong> <?php echo $lsT['estado_ticket']; ?></div>
                                           </div>
                                           <br>
                                           <div class="row">
@@ -83,9 +83,9 @@ if(mysqli_num_rows($consulta_tablaTicket)>=1){
                                           </div>
                                           <br>
                                           <div class="row">
-                                              <div class="col-sm-12"><strong>Calificación:</strong> <?php if ($lsT['calificacion'] != null): echo $lsT['calificacion']; ?>
+                                              <div class="col-sm-12"><strong>Evaluación del Servicio:</strong> <?php if ($lsT['calificacion'] != null): echo $lsT['calificacion']; ?>
                                                 <?php else: echo 'No has calificado este servicio'; ?>
-                                                
+
                                               <?php endif ?></div>
                                           </div>
                                       </div>
@@ -100,7 +100,7 @@ if(mysqli_num_rows($consulta_tablaTicket)>=1){
                               <div class="col-sm-6">
                                 <?php if ($lsT['calificacion'] != null): ?>
                                   <span class="btn btn-success">Ya has calificado este servicio</span>
-                                  <?php else: ?>                                    
+                                  <?php else: ?>
                                   <button class="btn btn-primary" data-toggle="modal" data-target="#modalCalificacion"><span class="glyphicon glyphicon-star"></span>&nbsp; Evaluar Servicio</button>
 
                                 <?php endif ?>
@@ -118,7 +118,7 @@ if(mysqli_num_rows($consulta_tablaTicket)>=1){
                 <div class="col-sm-4">
                     <img src="img/error.png" alt="Image" class="img-responsive"/><br>
                     <img src="img/SadTux.png" alt="Image" class="img-responsive"/>
-                    
+
                 </div>
                 <div class="col-sm-7 text-center">
                     <h1 class="text-danger">Lo sentimos ha ocurrido un error al hacer la consulta, esto se debe a lo siguiente:</h1>

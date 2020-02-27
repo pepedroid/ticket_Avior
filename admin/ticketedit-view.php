@@ -4,15 +4,18 @@
 		$estado_edit=  MysqlQuery::RequestPost('estado_ticket');
 		$solucion_edit=  MysqlQuery::RequestPost('solucion_ticket');
 		$radio_email=  MysqlQuery::RequestPost('optionsRadios');
+		$fecha_cierre=  (isset($_POST['fecha_evaluacion'])) ? $_POST['fecha_evaluacion'] : " ";
 
 		$cabecera="Administrador Avior TI.";
 		$mensaje_mail="Estimado usuario la solución a su problema es la siguiente : ". utf8_encode($solucion_edit);
 		$mensaje_mail=wordwrap($mensaje_mail, 70, "\r\n");
 
-		if(MysqlQuery::Actualizar("ticket", "estado_ticket='$estado_edit', solucion='$solucion_edit'", "id='$id_edit'")){
+		$fecha_cierre = ($estado_edit == "Resuelto") ? date("d/m/Y h:i:s") : $fecha_cierre;
+
+		if(MysqlQuery::Actualizar("ticket", "estado_ticket='$estado_edit', solucion='$solucion_edit', fechaCierre='$fecha_cierre'", "id='$id_edit'")){
 
 			echo '
-                <div class="alert alert-info alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
+                <div class="alert alert-info alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="text-center">TICKET Actualizado</h4>
                     <p class="text-center">
@@ -38,18 +41,18 @@
 
 		}else{
 			echo '
-                <div class="alert alert-danger alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
+                <div class="alert alert-danger alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="text-center">OCURRIÓ UN ERROR</h4>
                     <p class="text-center">
                         No hemos podido actualizar el ticket
                     </p>
                 </div>
-            '; 
+            ';
 		}
-	}     
+	}
 
-	     
+
 	$id = MysqlQuery::RequestGet('id');
 	$sql = Mysql::consulta("SELECT * FROM ticket WHERE id= '$id'");
 	$reg=mysqli_fetch_array($sql, MYSQLI_ASSOC);
@@ -68,8 +71,8 @@
             </div>
           </div>
         </div>
-            
-            
+
+
           <div class="container">
             <div class="col-sm-12">
                 <form class="form-horizontal" role="form" action="" method="POST">
@@ -79,11 +82,12 @@
                             <div class='col-sm-10'>
                                 <div class="input-group">
                                     <input class="form-control" readonly="" type="text" name="fecha_ticket" readonly="" value="<?php echo $reg['fecha']?>">
+                                    <input class="form-control" readonly="" type="hidden" name="fecha_cierre" readonly="" value="<?php echo $reg['fechaEvaluacion']?>">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Serie</label>
                             <div class='col-sm-10'>
@@ -93,7 +97,7 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Estado</label>
                             <div class='col-sm-10'>
@@ -125,7 +129,7 @@
                               <div class='input-group'>
                                   <input type="email" readonly="" class="form-control"  name="email_ticket" readonly="" value="<?php echo $reg['email_cliente']?>">
                                 <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                              </div> 
+                              </div>
                           </div>
                         </div>
 
@@ -135,7 +139,7 @@
                               <div class='input-group'>
                                   <input type="text" readonly="" class="form-control"  name="departamento_ticket" readonly="" value="<?php echo $reg['departamento']?>">
                                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                              </div> 
+                              </div>
                           </div>
                         </div>
 
@@ -145,7 +149,7 @@
                               <div class='input-group'>
                                   <input type="text" readonly="" class="form-control"  name="asunto_ticket" readonly="" value="<?php echo utf8_encode($reg['asunto'])?>">
                                 <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
-                              </div> 
+                              </div>
                           </div>
                         </div>
 
@@ -155,14 +159,14 @@
                               <textarea class="form-control" readonly="" rows="3"  name="mensaje_ticket" readonly=""><?php echo $reg['mensaje']?></textarea>
                           </div>
                         </div>
-                    
+
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Solución</label>
                           <div class="col-sm-10">
                             <textarea class="form-control" rows="3"  name="solucion_ticket" required=""><?php echo $reg['solucion']?></textarea>
                           </div>
                         </div>
-                    
+
                         <div class="row">
                             <div class="col-sm-offset-5">
                                 <div class="radio">
@@ -181,9 +185,9 @@
                                  </div>
                             </div>
                         </div>
-                    
+
                     <br>
-                    
+
                         <div class="form-group">
                           <div class="col-sm-offset-2 col-sm-10 text-center">
                               <button type="submit" class="btn btn-info">Actualizar ticket</button>

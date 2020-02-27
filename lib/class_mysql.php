@@ -8,7 +8,7 @@ class Mysql {
         }
         /* Codificar la información de la base de datos a UTF8*/
         mysqli_set_charset($con, "utf8");
-        return $con;  
+        return $con;
     }
 
     public static function consulta($query) {
@@ -46,15 +46,15 @@ class MysqlQuery {
 
     public static function RequestGet($val) {
         $data = addslashes($_GET[$val]);
-        $var = utf8_decode($data);
-        $datos = MysqlQuery::limpiarCadena($var);
+      //  $var = utf8_decode($data);
+        $datos = MysqlQuery::limpiarCadena($data);
         return $datos;
     }
 
     public static function RequestPost($val) {
         $data = addslashes($_POST[$val]);
-        $var = utf8_decode($data);
-        $datos = MysqlQuery::limpiarCadena($var);
+      //  $var = utf8_decode($data);
+        $datos = MysqlQuery::limpiarCadena($data);
         return $datos;
     }
 
@@ -81,4 +81,3 @@ class MysqlQuery {
         return $sql;
     }
 }
-

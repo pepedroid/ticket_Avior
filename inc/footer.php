@@ -10,7 +10,7 @@
       </div>-->
       <div class="col-sm-8">
         <h4 class="text-info">Dirección</h4>
-        <p class="text-warning"> 
+        <p class="text-warning">
         Pais: México<br>
         Ciudad: Querétaro<br>
         Telefono: +52(442)192-8000<br>
@@ -30,6 +30,6 @@
         </form>
       </div>
     </div>
-    <h4 class="text-center" style="color: #FFF;">Copyright 2012© Grupo SID </h4>
+    <h4 class="text-center" style="color: #FFF;">Sistemas TI Copyright <?php echo (date("Y")) ?>©</h4>
   </div>
 </footer>
